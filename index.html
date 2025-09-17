@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Teach & Classify (Offline)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <script src="./tf.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🎓 Teach & Classify</h1>
+    <p>Add classes, collect a few samples, click Train, then analyze a photo or camera frame. Fully offline.</p>
+  </header>
+
+  <main>
+    <!-- Teach -->
+    <section class="card">
+      <h2>1) Teach</h2>
+      <div class="row">
+        <div class="column">
+          <label>Project name
+            <input id="proj-name" type="text" placeholder="MyProject" />
+          </label>
+          <div class="cam-buttons">
+            <button id="start-cam">Start camera</button>
+            <button id="capture" disabled>Capture sample</button>
+            <button id="stop-cam" disabled>Stop</button>
+          </div>
+          <div class="hint">Camera helps you grab quick samples. You can also upload images.</div>
+        </div>
+
+        <div class="column">
+          <label>Add class
+            <input id="class-input" type="text" placeholder="e.g., apple" />
+          </label>
+          <div class="cam-buttons">
+            <button id="add-class">Add</button>
+            <button id="clear-classes">Clear</button>
+          </div>
+          <div id="class-list" class="hint"></div>
+        </div>
+
+        <div class="column">
+          <label class="file">
+            <span>Add sample images (goes to active class)</span>
+            <input id="sample-files" type="file" accept="image/*" multiple />
+          </label>
+          <div class="hint" id="sample-stats">0 samples</div>
+        </div>
+
+        <div class="column">
+          <div class="cam-buttons">
+            <button id="train" disabled>Train</button>
+            <button id="save-model" disabled>Save</button>
+            <button id="load-model">Load saved</button>
+            <button id="clear-saved">Clear saved</button>
+            <button id="export-model" disabled>Export</button>
+          </div>
+          <div class="hint">Saves to IndexedDB; export downloads a .json+.bin model.</div>
+        </div>
+      </div>
+      <div id="status" class="status">Loading feature extractor…</div>
+    </section>
+
+    <!-- Analyze -->
+    <section class="card">
+      <h2>2) Analyze</h2>
+      <div class="row">
+        <div class="column">
+          <label class="file">
+            <span>Photo</span>
+            <input id="image-input" type="file" accept="image/*" />
+          </label>
+          <button id="analyze-photo">Analyze photo</button>
+        </div>
+        <div class="column">
+          <button id="analyze-frame" disabled>Analyze camera frame</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Result -->
+    <section class="card">
+      <h2>3) Result</h2>
+      <div class="viewer">
+        <video id="video" autoplay playsinline muted class="hide"></video>
+        <canvas id="canvas" aria-label="preview"></canvas>
+      </div>
+      <div id="predictions" class="counts"></div>
+    </section>
+
+    <!-- History -->
+    <section class="card">
+      <h2>History</h2>
+      <div class="row">
+        <div class="column">
+          <button id="history-refresh">Refresh</button>
+          <button id="history-clear">Clear all</button>
+        </div>
+      </div>
+      <div id="history" class="history"></div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Runs fully offline. Hyperparameters are configured in <code>main.js</code> only.</small>
+  </footer>
+
+  <script src="styles.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
