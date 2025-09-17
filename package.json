@@ -1,7 +1,7 @@
 {
-  "name": "dia",
+  "name": "jiao",
   "version": "1.0.0",
-  "description": "dia",
+  "description": "jiao",
   "main": "server.js",
   "dependencies": {
     "express": "^4.18.2"
