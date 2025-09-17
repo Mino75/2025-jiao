@@ -1,0 +1,9 @@
+{
+  "name": "dia",
+  "version": "1.0.0",
+  "description": "dia",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
