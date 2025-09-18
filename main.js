@@ -6,9 +6,12 @@
  * - Results saved to IndexedDB: {timestamp, project, source, topk, counts, previewDataUrl}
  **************************************************/
 const CONFIG = {
+
+  MODEL_VERSION: 'MobileNet v1 0.25-224 (Layers)',
+  
   // Files (repo root, no subfolders)
   TFJS_PATH: './tf.min.js',
-  TEACH_FE_URL: './model.json',   // MobileNet v1 0.25-224 (Layers) you downloaded
+  TEACH_FE_URL: './model.json',   //  you downloaded
 
   // Requirements shown to end users (messages only)
   MIN_CLASSES: 2,
@@ -609,3 +612,4 @@ els.historyClear.addEventListener('click', async ()=>{ await clearResults(); awa
   renderClassChips();
   setStatus('Ready to teach.', true);
 })();
+
