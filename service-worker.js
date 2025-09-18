@@ -85,7 +85,8 @@ const ASSETS = [
   '/model.json',
   '/icon-512.png',
   '/icon-192.png',
-  '/favicon.ico'
+  '/favicon.ico',
+   ...Array.from({ length: 55 }, (_, i) => `/group${i + 1}-shard1of1`)
 ];
 
 // Logging helper
